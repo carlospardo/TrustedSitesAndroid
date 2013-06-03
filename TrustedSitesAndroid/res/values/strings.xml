@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">aaTrusted Sites</string>
+    <string name="menu_settings">Settings</string>
+    <string name="get_started">To get started, log in using Facebook</string>
+    <string name="app_id">161160437391579</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_tabs">Tabs</string>
+    <string name="title_activity_tab1">Tab1</string>
+    <string name="title_login_view">loginView</string>
+
+         <!-- MySites -->
+    <string name="title_activity_my_sites">MySites</string>
+    <string name="my_sites">My Sites</string>
+    <!-- FriendList -->
+    <string name="title_activity_friends_list">FriendsList</string>
+    <string name="friends">Friends</string>
+    <!-- SitesList -->
+    <string name="title_activity_sites_list">SitesList</string>
+    <string name="sites">Sites</string>
+    <!-- Map -->
+    <string name="title_activity_map">Map</string>
+    <string name="map">Map</string>
+    <string name="title_activity_login">Login</string>
+
+</resources>
