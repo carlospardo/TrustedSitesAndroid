@@ -1,5 +1,6 @@
 package com.trustedsitesandroid;
 
+import utils.Config;
 import android.os.Bundle;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -10,12 +11,15 @@ import android.widget.TabHost;
 @SuppressWarnings("deprecation")
 public class Tabs extends TabActivity {
 
-//	public final static String EXTRA_MESSAGE = "trustedSites.proyectoAndroid.MESSAGE";
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabs);
+
+//        Bundle bundle = getIntent().getExtras();
+//        String accessTokenFB = bundle.getString("acessTokenFB");
         
         TabHost tabHost = getTabHost();
         	
@@ -28,6 +32,7 @@ public class Tabs extends TabActivity {
         String map = getResources().getString(R.string.map);
         /*Se utilizara para abrir cada pestaña*/
         Intent intent = new Intent().setClass(this, MySites.class);
+        //intent.putExtra("accessTokenFB", accessTokenFB);
         /*Recurso para propiedades de ventana: se configura la pestaña con sus propiedades*/
         TabHost.TabSpec spec = tabHost.newTabSpec(my_sites).setIndicator(my_sites, res.getDrawable(R.drawable.ic_my_sites)).setContent(intent);
         /*se carga la pestaña en el contenedor TabHost*/    

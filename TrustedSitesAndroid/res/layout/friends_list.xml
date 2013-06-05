@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".FriendsList" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/selection_list"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/friends" />
+        android:layout_margin="20dp"
+        android:background="@drawable/button_border"/>
 
 </RelativeLayout>

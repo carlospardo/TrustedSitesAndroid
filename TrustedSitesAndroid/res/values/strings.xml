@@ -9,8 +9,16 @@
     <string name="title_activity_tabs">Tabs</string>
     <string name="title_activity_tab1">Tab1</string>
     <string name="title_login_view">loginView</string>
-
-         <!-- MySites -->
+    
+    <!-- LoginView -->
+    <string name="accessing">Accessing...</string>
+    <string name="progress">Progress</string>
+    <string name="error">Error</string>
+    <string name="server_error_info">There has been an error on the server. Close and re-open session after a few minutes</string>
+    <string name="userFb_error_info">There has been an error with the Facebook login. Try it again after a few minutes</string>
+	<string name="accept">Accept</string>
+    
+    <!-- MySites -->
     <string name="title_activity_my_sites">MySites</string>
     <string name="my_sites">My Sites</string>
     <!-- FriendList -->
