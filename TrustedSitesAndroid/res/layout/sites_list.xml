@@ -3,15 +3,21 @@
     android:layout_height="match_parent"
     android:background="@android:drawable/btn_default"
     android:orientation="vertical">
-    
+    <!-- 
+    <ListView
+        android:id="@+id/selection_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_border"/> -->
      <TextView
-        android:id="@+id/titulo_sites"
+        android:id="@+id/title_sites"
         android:layout_width="fill_parent"
         android:layout_height="24dp"
         android:layout_margin="10dp"
         android:layout_marginLeft="10dp"
         android:text="@string/sites"
-        android:textColor="@color/Negro"
+        android:textColor="@color/Black"
         android:textSize="21sp"
         android:typeface="sans" />
 	<FrameLayout
@@ -27,7 +33,7 @@
 	            android:id="@id/android:list"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
-	            android:divider="@color/Negro"
+	            android:divider="@color/Black"
 	            android:dividerHeight="4px"
 	            android:scrollingCache="false"
 	            android:visibility="visible" >

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="Negro">#000000</color>
-    <color name="Blanco">#FFFFFF</color>
-    <color name="Rojo">#FF0000</color>
-    <color name="AzulTwitter">#0080FF</color> 
-	<color name="AzulTwitterPressed">#78BCFF</color>
-    <color name="AzulFacebook">#0B0B61</color> 
-    <color name="AzulFacebookPressed">#454586</color>
+    <color name="Black">#000000</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Red">#FF0000</color>
+    <color name="SelectionGreen">#fb3</color>
+    <color name="BlueTwitter">#0080FF</color> 
+	<color name="BlueTwitterPressed">#78BCFF</color>
+    <color name="BlueFacebook">#0B0B61</color> 
+    <color name="BlueFacebookPressed">#454586</color>
 </resources>

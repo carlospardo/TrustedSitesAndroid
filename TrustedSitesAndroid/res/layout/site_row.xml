@@ -11,7 +11,7 @@
         android:layout_toRightOf="@+id/ImageView02"
         android:gravity="center_vertical"
         android:paddingLeft="5dip"
-        android:textColor="@color/Negro"
+        android:textColor="@color/Black"
         android:textSize="20dip" />
 
 </RelativeLayout>

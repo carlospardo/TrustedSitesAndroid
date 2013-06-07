@@ -53,7 +53,7 @@ public class LoginView  extends Activity{
 		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		dialog.setCancelable(false);
 		
-		Log.i(getLocalClassName(), "todo montado");
+		Log.d(getLocalClassName(), "todo montado");
 				
 	}
 		
@@ -65,9 +65,9 @@ public class LoginView  extends Activity{
 	    	  	    
 	    Session session = Session.getActiveSession();
 	    
-	    Log.i(getLocalClassName(), "session= " + session);
-	    Log.i(getLocalClassName(), "session.isClosed()=" + session.isClosed() + " session.isOpened()=" + session.isOpened());
-	    Log.i(getLocalClassName(), "conf.getAccessTokenFB()=" + conf.getAccessTokenFB());
+	    Log.d(getLocalClassName(), "session= " + session);
+	    Log.d(getLocalClassName(), "session.isClosed()=" + session.isClosed() + " session.isOpened()=" + session.isOpened());
+	    Log.d(getLocalClassName(), "conf.getAccessTokenFB()=" + conf.getAccessTokenFB());
 	    
 	    /**
 	     * Si hay sesion pero esta cerrada, volvemos a abrirla apartir del token
@@ -93,7 +93,6 @@ public class LoginView  extends Activity{
 	    		Log.i(getLocalClassName(), "Guardo el token: " + session.getAccessToken());
 	    		conf.setAccessTokenFB(session.getAccessToken());
 	    	}
-    	    this.makeMyFriendsRequest(session); 
     	    this.makeMeRequest(session); 
 	    }
 	    else{
@@ -110,77 +109,7 @@ public class LoginView  extends Activity{
 	    super.onPause();
 	    isResumed = false;
 	}
-	
-	/** Metodo para solicitar los datos del usuario*/
-	@SuppressWarnings("unused")
-	private void makeMeRequest(final Session session) {
-	    // Make an API call to get user data and define a new callback to handle the response.
-	    Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
-	        @Override
-	        public void onCompleted(GraphUser userFb, Response response) {
-	            // If the response is successful	     
-	            if (session == Session.getActiveSession()) {	            
-	                if (userFb != null) {	       
-	                	
-	                    Log.i(getLocalClassName(), "userFb.getName()): " + userFb.getName());	           
-	                    String imageURL = "http://graph.facebook.com/"+userFb.getId()+"/picture?type=square";                   	                    
-	                    User myUser = new User(userFb.getId(), userFb.getName(), imageURL, "444.45", "222.23");
-	                    
-                	    Log.i(getLocalClassName(), "ON RESUME: VOY A MOSTRAR APP");   	    	                	  
-                	    new Register().execute(myUser); 	                	   	                    
-	                }else{	                
-	                	Log.e(getLocalClassName(), "userFb es null!");
-	                	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-	                	dialogo.show();
-	                }
-	            }
-	            if (response.getError() != null) {
-	            	Log.e(getLocalClassName(), "Error al conectar con FB: " + response.getError().getErrorMessage());
-	            	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-                	dialogo.show();
-	            }
-	        }
-	    });
-	    request.executeAsync();
-	} 
-	/** Metodo para solicitar los amigos de Facebook*/
-	@SuppressWarnings("unused")
-	private void makeMyFriendsRequest(final Session session) {
-	    // Make an API call to get user data and define a new callback to handle the response.
-	    Request request = Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
-			
-			@Override
-			public void onCompleted(List<GraphUser> listUsers, Response response) {
-				
-				 // If the response is successful	     
-	            if (session == Session.getActiveSession()) {	            
-	                if (listUsers!= null) {	       
-	                	
-	                	listUsers.size();
-	                	Log.i(getLocalClassName(), "listUsers.size(): " + listUsers.size());
-	                	if(listUsers.size()!=0){
-		                	Log.i(getLocalClassName(), "listUsers.get(0).getName();: " + listUsers.get(0).getName());
-		                	Log.i(getLocalClassName(), "listUsers.get(0).getId(): " + listUsers.get(0).getId());
-	                	}
-	                    
-	                              	   	                    
-	                }else{	                
-	                	Log.e(getLocalClassName(), "listUsers es null!");
-	                	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-	                	dialogo.show();
-	                }
-	            }
-	            if (response.getError() != null) {
-	            	Log.e(getLocalClassName(), "Error al conectar con FB: " + response.getError().getErrorMessage());
-	            	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-                	dialogo.show();
-	            }
-				
-			}
-		}); 
-	    request.executeAsync();
-	} 
-	
+		
 	/** 
 	 * Método que sera llamado cuando hay un cambio de estado de la sesion.
 	 * Dependiendo del si la sesion esta abierta o no, mostramos una fragmento o otro.
@@ -192,8 +121,8 @@ public class LoginView  extends Activity{
 	    if (isResumed) {
 	    	
 	    	// If the session state is open:
-	        if (state.isOpened()) {	            	        	
-	        	this.makeMyFriendsRequest(session);	
+	        if (state.isOpened()) {	   
+	        	Log.i(getLocalClassName(), "ON SESSION STATE CHANGE: voy a autenticar!");
 	        	this.makeMeRequest(session); 
 	        } 
 	        // If the session state is closed:
@@ -202,6 +131,48 @@ public class LoginView  extends Activity{
 	        }
 	    }
 	}
+	
+	/** Metodo para solicitar los datos del usuario*/
+	@SuppressWarnings("unused")
+	private void makeMeRequest(final Session session) {
+	    
+		dialog.setProgress(0);
+        dialog.setMax(100);
+        dialog.show();
+		
+		// Make an API call to get user data and define a new callback to handle the response.
+	    Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
+	        @Override
+	        public void onCompleted(GraphUser userFb, Response response) {
+	            // If the response is successful	     
+	            if (session == Session.getActiveSession()) {	            
+	                if (userFb != null) {	       
+	                	
+	                    Log.d(getLocalClassName(), "userFb.getName()): " + userFb.getName());	           
+	                    String imageURL = "http://graph.facebook.com/"+userFb.getId()+"/picture?type=square";                   	                    
+	                    User myUser = new User(userFb.getId(), userFb.getName(), imageURL, "444.45", "222.23");
+	                    conf.setIdFacebook(myUser.getIdFacebook());
+                	    
+	                    Log.i(getLocalClassName(), "ON RESUME: VOY A MOSTRAR APP"); 
+	                    dialog.setProgress(50);
+                	    new Register().execute(myUser); 	                	   	                    
+	                }else{
+	                	dialog.dismiss();
+	                	Log.e(getLocalClassName(), "userFb es null!");
+	                	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
+	                	dialogo.show();
+	                }
+	            }
+	            if (response.getError() != null) {
+	            	dialog.dismiss();
+	            	Log.e(getLocalClassName(), "Error al conectar con FB: " + response.getError().getErrorMessage());
+	            	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
+                	dialogo.show();
+	            }
+	        }
+	    });
+	    request.executeAsync();
+	} 
 		
 	/**Usamos UiLifecycleHelper para hacer un seguimiento de la sesion y activar el listener*/
 	private UiLifecycleHelper uiHelper;
@@ -238,13 +209,12 @@ public class LoginView  extends Activity{
 	 */
 	private class Register extends AsyncTask<User, Float, Integer>{
 		
-		//private Handler mHandler = new Handler();
 		private boolean correct = false;
 		
         protected void onPreExecute() {
-            dialog.setProgress(0);
-            dialog.setMax(100);
-                dialog.show(); //Mostramos el diálogo antes de comenzar
+//            dialog.setProgress(0);
+//            dialog.setMax(100);
+//                dialog.show(); //Mostramos el diálogo antes de comenzar
          }
 
          protected Integer doInBackground(User... user) {
@@ -253,7 +223,8 @@ public class LoginView  extends Activity{
         		Log.i(getLocalClassName(), "hago el registro");
 				ApiHelpers.register(user[0]);
 				Log.i(getLocalClassName(), "registro hecho");
-				 publishProgress(250/250f);
+				 //publishProgress(250/250f);
+				 dialog.setProgress(100);
 				 correct = true;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -265,19 +236,19 @@ public class LoginView  extends Activity{
          }
 
          protected void onProgressUpdate (Float... valores) {
-             int p = Math.round(100*valores[0]);
-             dialog.setProgress(p);
+//             int p = Math.round(100*valores[0]);
+//             dialog.setProgress(p);
          }
 
          protected void onPostExecute(Integer bytes) {
              if(correct){
-            	 Log.i(getLocalClassName(), "voy a cerrar");
+            	 Log.d(getLocalClassName(), "voy a cerrar");
 	        	 dialog.dismiss();
 	        	 Intent i = new Intent(LoginView.this, Tabs.class);
-	        	 i.putExtra("accessTokenFB", conf.getAccessTokenFB());
 	          	 startActivity(i);
 	          	 finish();
              }else{
+            	 Log.d(getLocalClassName(), "error");
             	 dialog.dismiss();
             	 Dialog dialogo=createDialogError(getResources().getString(R.string.server_error_info));       		
             	 dialogo.show();

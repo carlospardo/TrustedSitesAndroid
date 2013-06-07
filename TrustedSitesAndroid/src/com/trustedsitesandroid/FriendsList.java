@@ -1,52 +1,62 @@
 package com.trustedsitesandroid;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import models.User;
 
-import utils.ApiHelpers;
 import utils.Config;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenSource;
-import com.facebook.Request;
-import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.model.GraphUser;
 
-import android.os.AsyncTask;
+import adapters.FriendsArrayAdapter;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 
-public class FriendsList extends Activity {
+import android.app.ListActivity;
 
-	private static Config conf;
+public class FriendsList extends ListActivity  {
+
+	private static final int MENU_OPC1 = 1;
+	private static final int MENU_OPC2 = 2;
 	
-	private ProgressDialog dialog;
+	private static Config conf;
+		
+	private ListView listViewFriends;
+	
+	private IFriendsListView view;
+	private FriendsListPresenter presenter;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends_list);
 		
-//		conf = new Config(FriendsList.this);	
-//        Bundle bundle = getIntent().getExtras();
-//        conf.setAccessTokenFB(bundle.getString("acessTokenFB"));
+		conf = new Config(FriendsList.this);	
         
-        dialog = new ProgressDialog(this);		
-		dialog.setMessage(getResources().getString(R.string.accessing));
-		dialog.setTitle(getResources().getString(R.string.progress));
-		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		dialog.setCancelable(false);
+		view = new IFriendsListView(this);
+		presenter = new FriendsListPresenter(view);
 		
+		Session session = Session.getActiveSession();
+
+		/**
+	     * Si hay una sesion abierta cargamos lista de amigos  
+	     */
+	    if (session != null && session.isOpened()) {
+	    	Log.i(getLocalClassName(), "La session es correcta");
+    	    presenter.makeMyFriendsRequest(session);    	  
+	    }	   
+	   
 	}
 	
 	@Override
@@ -58,8 +68,7 @@ public class FriendsList extends Activity {
 	    
 	    Log.i(getLocalClassName(), "session= " + session);
 	    Log.i(getLocalClassName(), "session.isClosed()=" + session.isClosed() + " session.isOpened()=" + session.isOpened());
-	   
-	    
+	   	    
 	    /**
 	     * Si hay sesion pero esta cerrada, volvemos a a LoginView para que vuelva abrir la 
 	     * sesion.
@@ -67,135 +76,116 @@ public class FriendsList extends Activity {
 	    if (session!= null && !session.isOpened()){
 	    
 	    	Log.i(getLocalClassName(), "La session esta cerrada");
-       	 	Intent i = new Intent(FriendsList.this, LoginView.class);     	 
-       	 	startActivity(i);
-         	finish();			
+			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			startActivity(i);
+			finish();
+	    }
+	    else if (session != null && session.isOpened()) {
+	    	Log.i(getLocalClassName(), "La session es correcta");  	  
 	    }
 	    /**
-	     * Si hay una sesion abierta cargamos lista de amigos  
+	     * Si no hay sesion, volvemos a LoginView para que vuelva abrir la 
+	     * sesion.
 	     */
-	    else if (session != null && session.isOpened()) {
-	    	Log.i(getLocalClassName(), "La session es correcta");
-    	    this.makeMyFriendsRequest(session);    	  
-	    }
 	    else{
 	    	Log.i(getLocalClassName(), "NO HAY SESSION");
-	    	Intent i = new Intent(FriendsList.this, LoginView.class);     	 
-       	 	startActivity(i);
-         	finish();
+			conf.setAccessTokenFB(null);
+			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			startActivity(i);
+			finish();
 	    }
 	}
 	
-	/** Metodo para solicitar los amigos de Facebook*/
-	@SuppressWarnings("unused")
-	private void makeMyFriendsRequest(final Session session) {
-	    // Make an API call to get user data and define a new callback to handle the response.
-	    Request request = Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
-			
-			@Override
-			public void onCompleted(List<GraphUser> listUsers, Response response) {
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+
+		User friend = (User) listViewFriends.getAdapter().getItem(position);
 				
-				 // If the response is successful	     
-	            if (session == Session.getActiveSession()) {	            
-	                if (listUsers!= null) {	       
-	                	
-	                	listUsers.size();
-	                	Log.i(getLocalClassName(), "listUsers.size(): " + listUsers.size());
-	                	List<String> listUserIds = new ArrayList<String>();
-	                	for (GraphUser u : listUsers){
-	                		listUserIds.add(u.getId());
-	                	}
-	                	
-	                	if(listUsers.size()!=0){
-		                	Log.i(getLocalClassName(), "listUsers.get(0).getName();: " + listUsers.get(0).getName());
-		                	Log.i(getLocalClassName(), "listUsers.get(0).getId(): " + listUsers.get(0).getId());
-	                	}
-	                	listUserIds = new ArrayList<String>();
-	                	listUserIds.add("123");
-	                	listUserIds.add("544794145");
-	                	new GetFriendsList().execute(listUserIds); 	
-	                 	                              	   	                    
-	                }else{	                
-	                	Log.e(getLocalClassName(), "listUsers es null!");
-	                	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-	                	dialogo.show();
-	                }
-	            }
-	            if (response.getError() != null) {
-	            	Log.e(getLocalClassName(), "Error al conectar con FB: " + response.getError().getErrorMessage());
-	            	Dialog dialogo=createDialogError(getResources().getString(R.string.userFb_error_info));       		
-                	dialogo.show();
-	            }
-				
+		if (v.getBackground() == null){		
+			v.setBackgroundColor(getResources().getColor(R.color.SelectionGreen));
+			conf.setFriendId(friend.getIdFacebook());
+			v.getBackground().setLevel(2);
+		}			
+		else if (v.getBackground().getLevel() == 2){
+			v.setBackgroundColor(Color.TRANSPARENT);
+			conf.removeFriendId(friend.getIdFacebook());	
+			v.getBackground().setLevel(1);
+			if(SitesList.presenter != null){
+				SitesList.presenter.deselectFriendsSites(friend.getIdFacebook());
 			}
-		}); 
-	    request.executeAsync();
+		}else{
+			v.setBackgroundColor(getResources().getColor(R.color.SelectionGreen));
+			conf.setFriendId(friend.getIdFacebook());	
+			v.getBackground().setLevel(2);
+		}
+		Session session = Session.getActiveSession();
+		if(SitesList.presenter != null){
+			SitesList.presenter.makeMySitesRequest(session);
+		}		 
+		Log.i(getLocalClassName(), "size of friendList: " + conf.getListFriendsIds().size());
+		Log.i(getLocalClassName(), "friendList: " + conf.getListFriendsIds());
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(Menu.NONE, MENU_OPC1, MENU_OPC1, getResources().getString(R.string.update)).setIcon(R.drawable.update);
+		menu.add(Menu.NONE, MENU_OPC2, MENU_OPC2, getResources().getString(R.string.logout)).setIcon(R.drawable.exit);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_OPC1:
+			Session session = Session.getActiveSession();
+			/**
+		     * Si hay una sesion abierta cargamos lista de amigos  
+		     */
+		    if (session != null && session.isOpened()) {
+		    	Log.i(getLocalClassName(), "La session es correcta");
+	    	    presenter.makeMyFriendsRequest(session);    	  
+		    }	
+			return true;
+		case MENU_OPC2:
+			session = Session.getActiveSession();
+			session.closeAndClearTokenInformation();
+			conf.setAccessTokenFB(null);
+			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			startActivity(i);
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 	/**
-	 * Params:  Datos que pasaremos al comenzar la tarea
-	 * Progress: Parámetros que necesitaremos para actualizar la UI.
-	 * Result: Dato que devolveremos una vez terminada la tarea.
+	 * Clase Vista
 	 */
-	private class GetFriendsList extends AsyncTask<List<String>, Float, Integer>{
+	public class IFriendsListView{
 		
-		//private Handler mHandler = new Handler();
-		private boolean correct = false;
+		private FriendsList activity;
 		
-        protected void onPreExecute() {
-            dialog.setProgress(0);
-            dialog.setMax(100);
-                dialog.show(); //Mostramos el diálogo antes de comenzar
-         }
+		public IFriendsListView(FriendsList activity){
+			this.activity = activity;
+		}
+		
+		public void setListFriends(List<User> listFriends){
+			FriendsArrayAdapter friendsAdapter= new FriendsArrayAdapter(FriendsList.this, listFriends);
+			listViewFriends = getListView();
+			listViewFriends.setAdapter(friendsAdapter);
+       	 	listViewFriends.setTextFilterEnabled(true);			
+		}
 
-         protected Integer doInBackground(List<String>... listUserIds) {
-        	 
-        	 try {
-        		Log.i(getLocalClassName(), "Cargo lista Amigos");
-        		List<User> listFriends = ApiHelpers.getListFriends(listUserIds[0], "1523497691");
-				
-				Log.i(getLocalClassName(), "carga hecha");
-				 publishProgress(250/250f);
-				 correct = true;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				Log.e(getLocalClassName(), "ERROR", e);
-				correct = false;
-			}
-        	 Log.i(getLocalClassName(), "250!"); 
-             return 250;
-         }
-
-         protected void onProgressUpdate (Float... valores) {
-             int p = Math.round(100*valores[0]);
-             dialog.setProgress(p);
-         }
-
-         protected void onPostExecute(Integer bytes) {
-             if(correct){
-            	 Log.i(getLocalClassName(), "voy a cargar la lista");
-	        	 dialog.dismiss();
-	        	 
-	        	 
-             }else{
-            	 dialog.dismiss();
-            	 Dialog dialogo=createDialogError(getResources().getString(R.string.server_error_info));       		
-            	 dialogo.show();
-             }                  			             
-         }  
-	}
-	
-	private Dialog createDialogError(String message){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-		builder.setTitle(getResources().getString(R.string.error));
-		builder.setMessage(message);
-		builder.setPositiveButton(getResources().getString(R.string.accept), new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-		return builder.create();
-	}
-	
+		public Config getConf(){
+			return conf;
+		}
+		public Resources getResources(){
+			return activity.getResources();
+		}
+		
+		public Activity getActivity(){
+			return activity;
+		}	
+	}	
 }

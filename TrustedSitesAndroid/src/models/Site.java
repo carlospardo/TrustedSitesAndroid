@@ -35,7 +35,7 @@ public class Site {
 	}
 	
 	public Site(String idSite, String name, String urlPhoto, String positionX,
-			String positionY, String nameOwner) {
+			String positionY, String nameOwner, String ownerId) {
 		super();
 		this.idSite = idSite;
 		this.name = name;
@@ -43,6 +43,7 @@ public class Site {
 		this.positionX = positionX;
 		this.positionY = positionY;
 		this.nameOwner= nameOwner;
+		this.ownerId = ownerId;
 	}
 
 	public String obtainTimestamp() {		

@@ -24,6 +24,8 @@
     <!-- FriendList -->
     <string name="title_activity_friends_list">FriendsList</string>
     <string name="friends">Friends</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
     <!-- SitesList -->
     <string name="title_activity_sites_list">SitesList</string>
     <string name="sites">Sites</string>
