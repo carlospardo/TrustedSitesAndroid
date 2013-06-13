@@ -9,29 +9,48 @@
     <string name="title_activity_tabs">Tabs</string>
     <string name="title_activity_tab1">Tab1</string>
     <string name="title_login_view">loginView</string>
-    
+
     <!-- LoginView -->
     <string name="accessing">Accessing...</string>
     <string name="progress">Progress</string>
     <string name="error">Error</string>
     <string name="server_error_info">There has been an error on the server. Close and re-open session after a few minutes</string>
     <string name="userFb_error_info">There has been an error with the Facebook login. Try it again after a few minutes</string>
-	<string name="accept">Accept</string>
-    
+    <string name="accept">Accept</string>
+
     <!-- MySites -->
     <string name="title_activity_my_sites">MySites</string>
     <string name="my_sites">My Sites</string>
+    <string name="init_my_sites">select the sites you want to see in the map</string>
     <!-- FriendList -->
     <string name="title_activity_friends_list">FriendsList</string>
     <string name="friends">Friends</string>
     <string name="update">Update</string>
     <string name="logout">Logout</string>
+    <string name="init_friends_list">select which user you want to see their sites</string>
     <!-- SitesList -->
     <string name="title_activity_sites_list">SitesList</string>
     <string name="sites">Sites</string>
+    <string name="init_sites_list">select the sites you want to see in the map</string>
     <!-- Map -->
     <string name="title_activity_map">Map</string>
     <string name="map">Map</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">Login</string> 
+    <string name="install_google_maps">Install Google Maps</string>  
+    <string name="install">Install</string>
+    <string name="owner">Owner</string>
+    <string name="provider_enable">Enabled the new provider </string>
+    <string name="provider_disable">Disabled provider </string>
+    <string name="init_map">Press in a site to see more information. Keep pressed in the map to create a new site</string>
+     <!-- RegisterSites -->
+     <string name="title_activity_register_site">RegisterSite</string>  
+    <string name="register_site">Register Site</string>
+    <string name="name_site">Name of the Site</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="info_site">Information about the Site</string>
+    <string name="return_map">Return</string>
+    <string name="create_site">Create Site</string>
+    <string name="register_error_info">You should fill all of the fields in the form</string>
 
 </resources>

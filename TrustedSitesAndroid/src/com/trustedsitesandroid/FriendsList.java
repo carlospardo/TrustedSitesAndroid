@@ -11,8 +11,6 @@ import com.facebook.Session;
 import adapters.FriendsArrayAdapter;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import android.app.ListActivity;
 
@@ -56,7 +55,6 @@ public class FriendsList extends ListActivity  {
 	    	Log.i(getLocalClassName(), "La session es correcta");
     	    presenter.makeMyFriendsRequest(session);    	  
 	    }	   
-	   
 	}
 	
 	@Override
@@ -81,7 +79,8 @@ public class FriendsList extends ListActivity  {
 			finish();
 	    }
 	    else if (session != null && session.isOpened()) {
-	    	Log.i(getLocalClassName(), "La session es correcta");  	  
+	    	Log.i(getLocalClassName(), "La session es correcta");  
+	    	Toast.makeText(FriendsList.this, getResources().getString(R.string.init_friends_list) , Toast.LENGTH_SHORT).show();
 	    }
 	    /**
 	     * Si no hay sesion, volvemos a LoginView para que vuelva abrir la 
@@ -120,7 +119,7 @@ public class FriendsList extends ListActivity  {
 		}
 		Session session = Session.getActiveSession();
 		if(SitesList.presenter != null){
-			SitesList.presenter.makeMySitesRequest(session);
+			SitesList.presenter.makeMySitesRequest();
 		}		 
 		Log.i(getLocalClassName(), "size of friendList: " + conf.getListFriendsIds().size());
 		Log.i(getLocalClassName(), "friendList: " + conf.getListFriendsIds());

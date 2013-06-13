@@ -11,8 +11,6 @@ import com.facebook.Session;
 import adapters.SitesArrayAdapter;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import android.app.ListActivity;
 
@@ -56,7 +55,7 @@ public class MySites extends ListActivity  {
 	     */
 	    if (session != null && session.isOpened()) {
 	    	Log.i(getLocalClassName(), "La session es correcta");	    
-    	    presenter.makeMySitesRequest(session);    	  
+    	    presenter.makeMySitesRequest();    	  
 	    }	   
 	   
 	}
@@ -83,7 +82,8 @@ public class MySites extends ListActivity  {
 			finish();
 	    }
 	    else if (session != null && session.isOpened()) {
-	    	Log.i(getLocalClassName(), "La session es correcta");  	  
+	    	Log.i(getLocalClassName(), "La session es correcta");  
+	    	Toast.makeText(MySites.this, getResources().getString(R.string.init_my_sites) , Toast.LENGTH_SHORT).show();
 	    }
 	    /**
 	     * Si no hay sesion, volvemos a LoginView para que vuelva abrir la 
@@ -139,7 +139,7 @@ public class MySites extends ListActivity  {
 		     */
 		    if (session != null && session.isOpened()) {
 		    	Log.i(getLocalClassName(), "La session es correcta");
-	    	    presenter.makeMySitesRequest(session);    	  
+	    	    presenter.makeMySitesRequest();    	  
 		    }	
 			return true;
 		case MENU_OPC2:

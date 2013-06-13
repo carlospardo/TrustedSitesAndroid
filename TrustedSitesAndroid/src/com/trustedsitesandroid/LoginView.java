@@ -1,7 +1,5 @@
 package com.trustedsitesandroid;
 
-import java.util.List;
-
 import models.User;
 import utils.ApiHelpers;
 import utils.Config;
@@ -23,7 +21,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 
 public class LoginView  extends Activity{

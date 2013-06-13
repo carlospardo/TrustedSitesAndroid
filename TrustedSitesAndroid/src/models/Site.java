@@ -3,6 +3,8 @@ package models;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import android.graphics.Bitmap;
+
 
 public class Site {
 
@@ -15,6 +17,8 @@ public class Site {
 	private String modifiedDate;
 	private String nameOwner;
 	private String ownerId;
+	private Bitmap bitmap;
+	private String idMarker;
 	
 	public Site(){
 		super();
@@ -110,5 +114,21 @@ public class Site {
 
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
+	}
+
+	public Bitmap getBitmap() {
+		return bitmap;
+	}
+
+	public void setBitmap(Bitmap bitmap) {
+		this.bitmap = bitmap;
+	}
+
+	public String getIdMarker() {
+		return idMarker;
+	}
+
+	public void setIdMarker(String idMarker) {
+		this.idMarker = idMarker;
 	}
 }

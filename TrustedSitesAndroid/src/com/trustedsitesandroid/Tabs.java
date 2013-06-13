@@ -1,6 +1,5 @@
 package com.trustedsitesandroid;
 
-import utils.Config;
 import android.os.Bundle;
 import android.app.TabActivity;
 import android.content.Intent;

@@ -46,11 +46,11 @@ public class Config {
 		editor.commit();
 	}
 	
-	public String getFriendsIds() {
+	private String getFriendsIds() {
 		return getSettings().getString(FRIENDS_IDS, null);
 	}
 
-	public void setFriendsIds(String friendsIds) {
+	private void setFriendsIds(String friendsIds) {
 		SharedPreferences.Editor editor = getSettings().edit();
 		editor.putString(FRIENDS_IDS, friendsIds);
 		editor.commit();
@@ -94,11 +94,11 @@ public class Config {
 		setFriendsIds(friendsIds);
 	}
 
-	public String getSitesIds() {
+	private String getSitesIds() {
 		return getSettings().getString(SITES_IDS, null);
 	}
 
-	public void setSitesIds(String sitesIds) {
+	private void setSitesIds(String sitesIds) {
 		SharedPreferences.Editor editor = getSettings().edit();
 		editor.putString(SITES_IDS, sitesIds);
 		editor.commit();
