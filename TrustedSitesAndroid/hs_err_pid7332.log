@@ -1,0 +1,112 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (classFileParser.cpp:3470), pid=7332, tid=7372
+#  Error: ShouldNotReachHere()
+#
+# JRE version: 7.0-b147
+# Java VM: Java HotSpot(TM) Client VM (21.0-b17 mixed mode windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00a49c00):  JavaThread "Unknown thread" [_thread_in_vm, id=7372, stack(0x00130000,0x00180000)]
+
+Stack: [0x00130000,0x00180000],  sp=0x0017f13c,  free space=316k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1630e1]
+V  [jvm.dll+0x15dcfb]
+V  [jvm.dll+0x18e37]
+V  [jvm.dll+0x1a6a8]
+V  [jvm.dll+0x2a42f]
+V  [jvm.dll+0x2b818]
+V  [jvm.dll+0x2bedb]
+V  [jvm.dll+0x2bf2a]
+V  [jvm.dll+0x2c07d]
+V  [jvm.dll+0x2c15a]
+V  [jvm.dll+0x2c3d7]
+V  [jvm.dll+0x73cb1]
+V  [jvm.dll+0x7406b]
+V  [jvm.dll+0x121a7c]
+V  [jvm.dll+0x14382a]
+V  [jvm.dll+0xa2940]
+C  [javaw.exe+0x1359]
+C  [javaw.exe+0x1dc9]
+C  [javaw.exe+0xa0cb]
+C  [javaw.exe+0xa155]
+C  [kernel32.dll+0x4ed6c]  BaseThreadInitThunk+0x12
+C  [ntdll.dll+0x6377b]  RtlInitializeExceptionChain+0xef
+C  [ntdll.dll+0x6374e]  RtlInitializeExceptionChain+0xc2
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00a49c00 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=7372, stack(0x00130000,0x00180000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Dynamic libraries:
+0x00f00000 - 0x00f2f000 	C:\Archivos de programa\Java\jdk1.7.0\bin\javaw.exe
+0x77d60000 - 0x77e9c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x776d0000 - 0x777a4000 	C:\Windows\system32\kernel32.dll
+0x76040000 - 0x7608b000 	C:\Windows\system32\KERNELBASE.dll
+0x76630000 - 0x766d0000 	C:\Windows\system32\ADVAPI32.dll
+0x77cb0000 - 0x77d5c000 	C:\Windows\system32\msvcrt.dll
+0x76300000 - 0x76319000 	C:\Windows\SYSTEM32\sechost.dll
+0x77620000 - 0x776c1000 	C:\Windows\system32\RPCRT4.dll
+0x76520000 - 0x765e9000 	C:\Windows\system32\USER32.dll
+0x775c0000 - 0x7760e000 	C:\Windows\system32\GDI32.dll
+0x77610000 - 0x7761a000 	C:\Windows\system32\LPK.dll
+0x766e0000 - 0x7677d000 	C:\Windows\system32\USP10.dll
+0x74c10000 - 0x74dae000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x777c0000 - 0x77817000 	C:\Windows\system32\SHLWAPI.dll
+0x77bb0000 - 0x77bcf000 	C:\Windows\system32\IMM32.DLL
+0x768a0000 - 0x7696c000 	C:\Windows\system32\MSCTF.dll
+0x5f760000 - 0x5f81e000 	C:\Archivos de programa\Java\jdk1.7.0\jre\bin\msvcr100.dll
+0x5a150000 - 0x5a471000 	C:\Archivos de programa\Java\jdk1.7.0\jre\bin\client\jvm.dll
+0x711d0000 - 0x711d7000 	C:\Windows\system32\WSOCK32.dll
+0x765f0000 - 0x76625000 	C:\Windows\system32\WS2_32.dll
+0x766d0000 - 0x766d6000 	C:\Windows\system32\NSI.dll
+0x73780000 - 0x737b2000 	C:\Windows\system32\WINMM.dll
+0x77ea0000 - 0x77ea5000 	C:\Windows\system32\PSAPI.DLL
+0x6c380000 - 0x6c38c000 	C:\Archivos de programa\Java\jdk1.7.0\jre\bin\verify.dll
+0x62d10000 - 0x62d30000 	C:\Archivos de programa\Java\jdk1.7.0\jre\bin\java.dll
+0x6b980000 - 0x6b993000 	C:\Archivos de programa\Java\jdk1.7.0\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 -Xbootclasspath:C:\Users\Carlos\AppData\Local\Android\android-sdk\platforms\android-16\android.jar 
+java_command: utils.Prueba
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+CLASSPATH=.;.;C:\PROGRA~1\JMF21~1.1E\lib\sound.jar;C:\PROGRA~1\JMF21~1.1E\lib\jmf.jar;C:\PROGRA~1\JMF21~1.1E\lib;
+PATH=C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Toshiba\Bluetooth Toshiba Stack\sys\;C:\Program Files\Calibre2\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2009a\bin;C:\Program Files\MATLAB\R2009a\bin\win32;C:\Program Files\Windows Live\Shared;C:\Program Files\SSH Communications Security\SSH Secure Shell
+USERNAME=Carlos
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 Service Pack 1
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 2087352k(295820k free), swap 4174704k(1772156k free)
+
+vm_info: Java HotSpot(TM) Client VM (21.0-b17) for windows-x86 JRE (1.7.0-b147), built on Jun 27 2011 02:25:52 by "java_re" with unknown MS VC++:1600
+
+time: Tue Jun 04 11:18:58 2013
+elapsed time: 0 seconds
+
