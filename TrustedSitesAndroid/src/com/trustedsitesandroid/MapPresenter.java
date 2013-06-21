@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,18 +56,21 @@ public class MapPresenter {
 
 		LocationProvider provider = view.getLocationManager().getProvider(
 				view.getLocationManager().getBestProvider(createBestCriteria(),false));
-		provider = view.getLocationManager().getProvider(view.getLocationManager().NETWORK_PROVIDER);
+		view.getLocationManager();
+		provider = view.getLocationManager().getProvider(LocationManager.NETWORK_PROVIDER);
 
 		Location firstLocation = view.getLocationManager().getLastKnownLocation(provider.getName());
 		if (firstLocation == null) {
 			Log.d("MapPresenter", "FirstLocation con " + provider.getName() + " NO encontrada");
-			firstLocation = view.getLocationManager().getLastKnownLocation(view.getLocationManager().NETWORK_PROVIDER);
+			view.getLocationManager();
+			firstLocation = view.getLocationManager().getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 			
 			if (firstLocation == null) {
 				Log.d("MapPresenter", "FirstLocation con NETWORK_PROVIDER NO encontrada");
 				
 			} else {				
-				provider = view.getLocationManager().getProvider(view.getLocationManager().PASSIVE_PROVIDER);
+				view.getLocationManager();
+				provider = view.getLocationManager().getProvider(LocationManager.PASSIVE_PROVIDER);
 				Log.d("MapPresenter", "FirstLocation con " + provider.getName()+ " encontrada. Lo seleccionamos");
 				view.getLocationManager().requestLocationUpdates(provider.getName(), 100, 1, view.getlocationListener());
 				
@@ -86,6 +90,7 @@ public class MapPresenter {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void makeMapSitesRequest() {
 
 		view.getMap().clear();
@@ -95,6 +100,17 @@ public class MapPresenter {
 		dialog.show();
 
 		new GetSites().execute(view.getConf().getListSitesIds());
+	}
+	
+	public Site getSiteByIdMarker(String id){
+		
+		boolean encontrado = false;
+		for (int i = 0; i < listSites.size() && !encontrado; i++) {
+			if (listSites.get(i).getIdMarker().equals(id)){
+				return listSites.get(i);
+			}
+		}
+		return null;
 	}
 
 	public AlertDialog createDialogInstallGoogleMaps() {
@@ -139,13 +155,18 @@ public class MapPresenter {
 		txtTitle.setText(titleText);
 
 		TextView txtType = ((TextView) contents.findViewById(R.id.txtInfoWindowEventType));
-		txtType.setText(marker.getSnippet());
+		txtType.setText(marker.getSnippet());	
 
 		boolean encontrado = false;
 		for (int i = 0; i < listSites.size() && !encontrado; i++) {
 			if (listSites.get(i).getIdMarker().equals(marker.getId())) {
 				ImageView imageView = (ImageView) contents.findViewById(R.id.ivInfoWindowMain);					
-				imageView.setImageBitmap(listSites.get(i).getBitmap());
+				//imageView.setImageBitmap(listSites.get(i).getBitmap());
+				imageView.setImageResource(R.drawable.logo);
+				
+				TextView txtOwner = ((TextView) contents.findViewById(R.id.Owner));
+				txtOwner.setText(view.getResources().getString(R.string.owner) + ": "
+								+ listSites.get(i).getNameOwner());
 				encontrado = true;
 			}
 		}
@@ -156,11 +177,6 @@ public class MapPresenter {
 		TextView txtType = ((TextView) contents.findViewById(R.id.txtInfoWindowEventType));
 		txtType.setText(marker.getSnippet());
 		
-		TextView txtTitle = ((TextView) contents.findViewById(R.id.txtInfoWindowTitle));
-		txtTitle.setText(null);
-		
-		ImageView imageView = (ImageView) contents.findViewById(R.id.ivInfoWindowMain);				
-		imageView.setImageBitmap(null);
 		return contents;		
 	}
 	
@@ -169,13 +185,18 @@ public class MapPresenter {
 		LatLng latLng = new LatLng(Float.parseFloat(site.getPositionX()),
 				Float.parseFloat(site.getPositionY()));
 		
+		float color;
+		if (site.getOwnerId().equals(view.getConf().getIdFacebook())){
+			color= BitmapDescriptorFactory.HUE_GREEN;
+		}else{
+			color = BitmapDescriptorFactory.HUE_AZURE;
+		}
 		Marker marker = view.getMap().addMarker(new MarkerOptions()
 			.position(latLng)
 			.title(site.getName())
-			.snippet(site.getInfo() + "\n" + view.getResources().getString(R.string.owner)
-					+ ": "+ site.getNameOwner())
+			.snippet(site.getInfo())
 			.icon(BitmapDescriptorFactory
-			.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+			.defaultMarker(color)));
 		
 		Log.d("MapPresenter","idMarker: " + marker.getId());
 		site.setIdMarker(marker.getId());
@@ -227,6 +248,7 @@ public class MapPresenter {
 		protected void onProgressUpdate(Float... valores) {
 		}
 
+		@SuppressWarnings("unchecked")
 		protected void onPostExecute(Integer bytes) {
 			if (correct) {
 				Log.i("MapPresenter", "voy a cargar la lista");

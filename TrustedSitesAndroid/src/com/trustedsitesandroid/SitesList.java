@@ -74,7 +74,7 @@ public class SitesList extends ListActivity  {
 	    if (session!= null && !session.isOpened()){
 	    
 	    	Log.i(getLocalClassName(), "La session esta cerrada");
-			Intent i = new Intent(SitesList.this, LoginView.class);     	 
+			Intent i = new Intent(SitesList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 	    }
@@ -93,7 +93,7 @@ public class SitesList extends ListActivity  {
 	    else{
 	    	Log.i(getLocalClassName(), "NO HAY SESSION");
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(SitesList.this, LoginView.class);     	 
+			Intent i = new Intent(SitesList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 	    }
@@ -147,7 +147,7 @@ public class SitesList extends ListActivity  {
 			session = Session.getActiveSession();
 			session.closeAndClearTokenInformation();
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(SitesList.this, LoginView.class);     	 
+			Intent i = new Intent(SitesList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 			return true;
@@ -168,7 +168,7 @@ public class SitesList extends ListActivity  {
 		}
 		
 		public void setListSites(List<Site> listSites){
-			SitesArrayAdapter sitesAdapter= new SitesArrayAdapter(SitesList.this, listSites);
+			SitesArrayAdapter sitesAdapter= new SitesArrayAdapter(SitesList.this, listSites, conf);
 			listViewSites = getListView();
 			listViewSites.setAdapter(sitesAdapter);
        	 	listViewSites.setTextFilterEnabled(true);

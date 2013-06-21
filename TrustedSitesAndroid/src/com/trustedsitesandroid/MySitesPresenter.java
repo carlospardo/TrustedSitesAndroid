@@ -48,7 +48,6 @@ public class MySitesPresenter {
 	}
 	
 	/** Metodo para solicitar los amigos de Facebook*/
-	@SuppressWarnings("unused")
 	public void makeMySitesRequest() {
 		
 		dialog = createProgressDialog();

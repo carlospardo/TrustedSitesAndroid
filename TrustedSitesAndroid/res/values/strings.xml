@@ -25,7 +25,7 @@
     <!-- FriendList -->
     <string name="title_activity_friends_list">FriendsList</string>
     <string name="friends">Friends</string>
-    <string name="update">Update</string>
+    <string name="update">Refresh</string>
     <string name="logout">Logout</string>
     <string name="init_friends_list">select which user you want to see their sites</string>
     <!-- SitesList -->
@@ -35,15 +35,15 @@
     <!-- Map -->
     <string name="title_activity_map">Map</string>
     <string name="map">Map</string>
-    <string name="title_activity_login">Login</string> 
-    <string name="install_google_maps">Install Google Maps</string>  
+    <string name="title_activity_login">Login</string>
+    <string name="install_google_maps">Install Google Maps</string>
     <string name="install">Install</string>
     <string name="owner">Owner</string>
     <string name="provider_enable">Enabled the new provider </string>
     <string name="provider_disable">Disabled provider </string>
     <string name="init_map">Press in a site to see more information. Keep pressed in the map to create a new site</string>
-     <!-- RegisterSites -->
-     <string name="title_activity_register_site">RegisterSite</string>  
+    <!-- RegisterSite -->
+    <string name="title_activity_register_site">RegisterSite</string>
     <string name="register_site">Register Site</string>
     <string name="name_site">Name of the Site</string>
     <string name="latitude">Latitude</string>
@@ -53,4 +53,21 @@
     <string name="create_site">Create Site</string>
     <string name="register_error_info">You should fill all of the fields in the form</string>
 
+    <!-- Info Site -->
+    <string name="title_activity_info_site">InfoSite</string>
+    <string name="info_site_title">Site Information</string>
+    <string name="name_site_info">Name of the Site:</string>
+    <string name="owner_info">Owner:</string>
+    <string name="latitude_info">Latitude:</string>
+    <string name="longitude_info">Longitude:</string>
+    <string name="info_site_info">Information about the Site:</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_modify_site">ModifySite</string>
+    
+    <!-- Update Site -->
+    <string name="remove_site">Remove Site</string>
+    <string name="update_site">Update Site</string>
+    <string name="message_remove_site">Are you sure that you want to eliminate this site?</string>
+	<string name="cancel">Cancel</string>
+	 
 </resources>

@@ -74,7 +74,7 @@ public class FriendsList extends ListActivity  {
 	    if (session!= null && !session.isOpened()){
 	    
 	    	Log.i(getLocalClassName(), "La session esta cerrada");
-			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			Intent i = new Intent(FriendsList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 	    }
@@ -89,7 +89,7 @@ public class FriendsList extends ListActivity  {
 	    else{
 	    	Log.i(getLocalClassName(), "NO HAY SESSION");
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			Intent i = new Intent(FriendsList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 	    }
@@ -149,7 +149,7 @@ public class FriendsList extends ListActivity  {
 			session = Session.getActiveSession();
 			session.closeAndClearTokenInformation();
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(FriendsList.this, LoginView.class);     	 
+			Intent i = new Intent(FriendsList.this, Login.class);     	 
 			startActivity(i);
 			finish();
 			return true;
@@ -170,7 +170,7 @@ public class FriendsList extends ListActivity  {
 		}
 		
 		public void setListFriends(List<User> listFriends){
-			FriendsArrayAdapter friendsAdapter= new FriendsArrayAdapter(FriendsList.this, listFriends);
+			FriendsArrayAdapter friendsAdapter= new FriendsArrayAdapter(FriendsList.this, listFriends, conf);
 			listViewFriends = getListView();
 			listViewFriends.setAdapter(friendsAdapter);
        	 	listViewFriends.setTextFilterEnabled(true);			

@@ -2,6 +2,8 @@ package adapters;
 
 import java.util.List;
 
+import utils.Config;
+
 import models.User;
 
 import com.trustedsitesandroid.R;
@@ -18,12 +20,13 @@ public class FriendsArrayAdapter  extends BaseAdapter  {
 	
 	private final Activity context;
 	private final List<User> listFriends;
-	private TextView item;
+	private final Config conf;
 
 
-	public FriendsArrayAdapter(Activity context, List<User> listFriends) {
+	public FriendsArrayAdapter(Activity context, List<User> listFriends, Config conf) {
 		this.context = context;
 		this.listFriends = listFriends;
+		this.conf = conf;
 	}
 	
 	
@@ -37,8 +40,13 @@ public class FriendsArrayAdapter  extends BaseAdapter  {
 			 new utils.DownloadImageTask((ImageView) rowView.findViewById(R.id.ImageView02)).execute(url);
 		}
 		
-		TextView userTextView = (TextView) rowView.findViewById(android.R.id.text1);
+		TextView userTextView = (TextView) rowView.findViewById(R.id.text1);
 		userTextView.setText(listFriends.get(position).getName());		
+				
+		if (conf.isSelectedThisFriend(listFriends.get(position).getIdFacebook())){
+			rowView.setBackgroundColor(context.getResources().getColor(R.color.SelectionGreen));				
+			rowView.getBackground().setLevel(2);
+		}
 		
 		return rowView;
 	}

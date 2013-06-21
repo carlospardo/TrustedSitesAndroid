@@ -29,8 +29,8 @@
             android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="#ff000000"
-            android:textSize="14dp"
+            android:textColor="@color/Red"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,9 +38,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:paddingLeft="5dip"
             android:singleLine="true"
-            android:textColor="#ff7f7f7f"
-            android:textSize="14dp" />
+            android:textColor="@color/Black"
+            android:textSize="14sp" />
+        
+        <TextView
+            android:id="@+id/Owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingLeft="5dip"
+            android:singleLine="true"
+            android:textColor="@color/Black"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

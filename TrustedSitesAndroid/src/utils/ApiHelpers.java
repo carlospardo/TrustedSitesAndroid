@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 public class ApiHelpers {
 	
-	public static String SERVER_ADDRESS = "http://192.168.1.4:8080/";
+	public static String SERVER_ADDRESS = "http://192.168.1.2:8080/";
 	
 	public static String APP_BASEURL = "PruebaSpringWicket/rest";
 	

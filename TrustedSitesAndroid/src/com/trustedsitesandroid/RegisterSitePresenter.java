@@ -44,7 +44,7 @@ public class RegisterSitePresenter {
 		}
 		else{			
 			Site site = new Site("", name, "http://graph.facebook.com/285931851535123/picture?type=thumbnail",
-					 lat, lng, info, "", view.getConf().getIdFacebook());					
+					 lat, lng, info, view.getConf().getNameUser(), view.getConf().getIdFacebook());					
 			makeNewSiteRequest(site);
 		}
 	}

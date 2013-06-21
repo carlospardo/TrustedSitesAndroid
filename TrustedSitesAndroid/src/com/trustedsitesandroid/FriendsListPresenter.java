@@ -52,7 +52,6 @@ public class FriendsListPresenter {
 	}
 	
 	/** Metodo para solicitar los amigos de Facebook*/
-	@SuppressWarnings("unused")
 	public void makeMyFriendsRequest(final Session session) {
 	    
 		dialog = createProgressDialog();
@@ -63,6 +62,7 @@ public class FriendsListPresenter {
      // Make an API call to get user data and define a new callback to handle the response.
 		Request request = Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
 			
+			@SuppressWarnings("unchecked")
 			@Override
 			public void onCompleted(List<GraphUser> listUsers, Response response) {
 				

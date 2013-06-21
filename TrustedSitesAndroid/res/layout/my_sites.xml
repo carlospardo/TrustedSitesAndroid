@@ -1,15 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:drawable/btn_default"
+   	android:background="@drawable/fondo"
     android:orientation="vertical">
-    <!-- 
-    <ListView
-        android:id="@+id/selection_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/button_border"/> -->
      <TextView
         android:id="@+id/title_my_sites"
         android:layout_width="fill_parent"
@@ -23,22 +16,20 @@
 	<FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="310dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"  
-        android:background="@android:drawable/btn_default"      
+        android:layout_margin="15dp"
         android:layout_weight="0.70"
-        android:visibility="visible" >
+        android:padding="10dp"    
+        android:background="@android:drawable/btn_default">
 	    <ListView
-	            android:id="@id/android:list"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:divider="@color/Black"
-	            android:dividerHeight="4px"
-	            android:scrollingCache="false"
-	            android:visibility="visible" >
-	
+            android:id="@id/android:list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.02"
+            android:divider="@color/spaceListView"
+            android:dividerHeight="2px"	           
+            android:scrollingCache="false">
 	    </ListView>
+
     </FrameLayout>
 
 </LinearLayout>

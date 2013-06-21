@@ -3,16 +3,6 @@
     android:layout_width="80dip"
     android:layout_height="80dip" >
 
-    <TextView
-        android:id="@android:id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/ImageView02"
-        android:paddingLeft="5dip"
-        android:textColor="@color/Black"
-        android:textSize="20dip" />
-
     <ImageView
         android:id="@+id/ImageView02"
         android:layout_width="60dip"
@@ -21,5 +11,26 @@
         android:adjustViewBounds="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
+        
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"      
+        android:layout_toRightOf="@+id/ImageView02"
+        android:paddingLeft="5dip"
+        android:textColor="@color/Black"
+      
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+	    android:id="@+id/owner"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"	   
+	    android:layout_below="@+id/text1"
+	    android:layout_toRightOf="@+id/ImageView02"
+	    android:paddingLeft="5dip"
+	    android:textColor="@color/Black"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
 </RelativeLayout>

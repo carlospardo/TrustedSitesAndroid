@@ -14,6 +14,7 @@ public class Config {
 	private final String SHARED_PREFS_FILE = "HMPrefs";
 	private static final String FB_ACCESS_TOKEN = "accessTokenFb";
 	private static final String ID_FACEBOOK= "idFacebook";
+	private static final String NAME_USER= "nameUser";
 	private static final String FRIENDS_IDS= "friendsIds";
 	private static final String SITES_IDS= "sitesIds";
 	private Context mContext;
@@ -46,11 +47,21 @@ public class Config {
 		editor.commit();
 	}
 	
+	public String getNameUser() {
+		return getSettings().getString(NAME_USER, null);
+	}
+
+	public void setNameUser(String nameUser) {
+		SharedPreferences.Editor editor = getSettings().edit();
+		editor.putString(NAME_USER, nameUser);
+		editor.commit();
+	}
+	
 	private String getFriendsIds() {
 		return getSettings().getString(FRIENDS_IDS, null);
 	}
 
-	private void setFriendsIds(String friendsIds) {
+	public void setFriendsIds(String friendsIds) {
 		SharedPreferences.Editor editor = getSettings().edit();
 		editor.putString(FRIENDS_IDS, friendsIds);
 		editor.commit();
@@ -62,13 +73,15 @@ public class Config {
 		if (friendsIds != null){
 			String[] s = friendsIds.split(":");
 			for (String id : s){
-				listFriendsIds.add(id);
+				if(!id.equals("")){
+					listFriendsIds.add(id);
+				}
 			}
 		}	
 		return listFriendsIds;
 	}
 	public void setListFriendsIds(List<String> listFriendsIds) {	
-		String friendsIds = "";
+		String friendsIds = ":";
 		for (String id : listFriendsIds){
 			friendsIds=friendsIds + id + ":";
 		}
@@ -78,7 +91,7 @@ public class Config {
 	public void setFriendId(String id) {
 		String friendsIds =getFriendsIds();
 		if(friendsIds == null){
-			friendsIds = "";
+			friendsIds = ":";
 		}
 		if (!friendsIds.contains(id)){
 			friendsIds=friendsIds + id + ":";
@@ -87,18 +100,28 @@ public class Config {
 	}
 	public void removeFriendId(String id) {
 		String friendsIds = getFriendsIds();
-		friendsIds= friendsIds.replace(id+":", "");
-		if (friendsIds.equals("")){
-			friendsIds = null;
+		if(friendsIds != null){
+			friendsIds= friendsIds.replace(":"+id+":", ":");
+			if (friendsIds.equals(":")){
+				friendsIds = null;
+			}
 		}
 		setFriendsIds(friendsIds);
+	}
+	public boolean isSelectedThisFriend(String id){
+		String friendsIds = getFriendsIds();
+		if(friendsIds != null){
+			return friendsIds.contains(":"+id+":");
+		}else{
+			return false;
+		}
 	}
 
 	private String getSitesIds() {
 		return getSettings().getString(SITES_IDS, null);
 	}
 
-	private void setSitesIds(String sitesIds) {
+	public void setSitesIds(String sitesIds) {
 		SharedPreferences.Editor editor = getSettings().edit();
 		editor.putString(SITES_IDS, sitesIds);
 		editor.commit();
@@ -110,13 +133,15 @@ public class Config {
 		if (sitesIds != null){
 			String[] s = sitesIds.split(":");
 			for (String id : s){
-				listSitesIds.add(id);
+				if(!id.equals("")){
+					listSitesIds.add(id);
+				}
 			}
 		}	
 		return listSitesIds;
 	}
 	public void setListSitesIds(List<String> listSitesIds) {	
-		String sitesIds = "";
+		String sitesIds = ":";
 		for (String id : listSitesIds){
 			sitesIds=sitesIds + id + ":";
 		}
@@ -126,7 +151,7 @@ public class Config {
 	public void setSiteId(String id) {
 		String sitesIds =getSitesIds();
 		if(sitesIds == null){
-			sitesIds = "";
+			sitesIds = ":";
 		}
 		if (!sitesIds.contains(id)){
 			sitesIds=sitesIds + id + ":";
@@ -135,11 +160,21 @@ public class Config {
 	}
 	public void removeSiteId(String id) {
 		String sitesIds = getSitesIds();
-		sitesIds= sitesIds.replace(id+":", "");
-		if (sitesIds.equals("")){
-			sitesIds = null;
+		if(sitesIds != null){
+			sitesIds= sitesIds.replace(":"+id+":", ":");
+			if (sitesIds.equals(":")){
+				sitesIds = null;
+			}
 		}
 		setSitesIds(sitesIds);
+	}
+	public boolean isSelectedThisSite(String idSite){
+		String sitesIds = getSitesIds();
+		if(sitesIds != null){
+			return sitesIds.contains(":"+idSite+":");
+		}else{
+			return false;
+		}
 	}
 
 }

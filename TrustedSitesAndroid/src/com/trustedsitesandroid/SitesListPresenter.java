@@ -61,14 +61,24 @@ public class SitesListPresenter {
 	}
 	
 	/** Metodo para solicitar los amigos de Facebook*/
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unchecked")
 	public void makeMySitesRequest() {
 		
-		dialog = createProgressDialog();
-    	dialog.setProgress(0);
-        dialog.setMax(100);
-        dialog.show();
-        
+		if (dialog == null){				
+			dialog = createProgressDialog();
+	    	dialog.setProgress(0);
+	        dialog.setMax(100);
+	        dialog.show();
+			
+		}else{
+			if(!dialog.isShowing()){
+		        System.out.println("entrooooo");
+		    	dialog.setProgress(0);
+		        dialog.setMax(100);
+		        dialog.show();
+			}
+		}
+	        
         new GetSitesList().execute(view.getConf().getListFriendsIds());
 	        	       			 						 						
 	}
@@ -110,7 +120,7 @@ public class SitesListPresenter {
              if(correct){              	            	
             	 Log.i("SitesListPresenter", "voy a cargar la lista");	    	
     	    	 view.setListSites(listSites);             	 
-    	    	 dialog.dismiss();	           	 	        	 	        	 
+    	    	 dialog.dismiss();	     
              }else{
             	 dialog.dismiss();
             	 Dialog dialogo= createDialogError(view.getResources().getString(R.string.server_error_info));       		            		

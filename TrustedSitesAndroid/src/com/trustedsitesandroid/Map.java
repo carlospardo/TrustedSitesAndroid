@@ -1,5 +1,6 @@
 package com.trustedsitesandroid;
 
+import models.Site;
 import utils.Config;
 
 import com.facebook.Session;
@@ -29,8 +30,10 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,7 +55,7 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 	private static Config conf;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map);
 
@@ -94,13 +97,37 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 			double lat = marker.getPosition().latitude;
 			double lng = marker.getPosition().longitude;
 			Log.d(getLocalClassName(),"lat: " + lat + " lng: " + lng);
-			Intent i = new Intent(Map.this, RegisterSite.class);     	 
+			
+			
+			Intent i = new Intent(Map.this, RegisterSite.class);     	 			
 			i.putExtra("latitude", Double.toString(lat));
 			i.putExtra("longitude", Double.toString(lng));
-			startActivity(i);		
+			startActivity(i);
+			
+		}else{
+			
+		
+
+			Site site = presenter.getSiteByIdMarker(marker.getId());
+			/**
+			 * Editamos el site
+			 */
+			if (site.getOwnerId().equals(conf.getIdFacebook())){
+				Intent i = new Intent(Map.this, ModifySite.class);     
+				System.out.println("site.getBitmap(): " + site.getBitmap());
+				i.putExtra("site", site);
+				startActivity(i);
+			}else{
+				Intent i = new Intent(Map.this, InfoSite.class);     
+				System.out.println("site.getBitmap(): " + site.getBitmap());
+				i.putExtra("site", site);
+				startActivity(i);
+			}
+			
+			
 		}
 	}
-
+	
 	@Override
 	public void onMapClick(LatLng punto) {
 		
@@ -128,12 +155,16 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 		marker.showInfoWindow();										
 		
 	}
+	 
+	//Para que el ActivityGroup reciba el evento onKeyDown.
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		return false;
+	}
 
 	@Override
 	public View getInfoContents(Marker marker) {
-		
-		 View contents = this.getLayoutInflater().inflate(R.layout.site_window, null);
-		
+				
 		if (marker.getTitle() != null){
 			Log.d(getLocalClassName(),"es un sitio");
 			if(markerSelect != null){
@@ -141,6 +172,7 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 				markerSelect.remove();
 				markerSelect = null;
 			}
+			View contents = this.getLayoutInflater().inflate(R.layout.site_window, null);
 			
 			contents = presenter.buildMarkerSite(contents, marker);
 			
@@ -149,6 +181,7 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 		else{
 			Log.d(getLocalClassName(),"es una pulsacion");
 			
+			View contents = this.getLayoutInflater().inflate(R.layout.site_window_create, null);
 			contents = presenter.buildMarkerPulsation(contents, marker);
 					
 			return contents;
@@ -187,6 +220,7 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public boolean isGoogleMapsInstalled() {
 		try {
 			ApplicationInfo info = getPackageManager().getApplicationInfo(
@@ -235,7 +269,7 @@ public class Map extends FragmentActivity implements OnMapClickListener, OnMapLo
 			session = Session.getActiveSession();
 			session.closeAndClearTokenInformation();
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(Map.this, LoginView.class);     	 
+			Intent i = new Intent(Map.this, Login.class);    
 			startActivity(i);
 			finish();
 			return true;

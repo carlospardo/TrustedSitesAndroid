@@ -1,13 +1,21 @@
 package models;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 
-public class Site {
+public class Site implements Serializable{
 
+	private static final int NO_IMAGE = -1;
+	private static final long serialVersionUID = 1L;
 	private String idSite;
 	private String name;
 	private String urlPhoto;
@@ -17,8 +25,9 @@ public class Site {
 	private String modifiedDate;
 	private String nameOwner;
 	private String ownerId;
-	private Bitmap bitmap;
+	transient Bitmap bitmap;
 	private String idMarker;
+
 	
 	public Site(){
 		super();
@@ -123,6 +132,53 @@ public class Site {
 	public void setBitmap(Bitmap bitmap) {
 		this.bitmap = bitmap;
 	}
+	
+	private void writeObject(ObjectOutputStream oos) throws IOException{
+	       // This will serialize all fields that you did not mark with 'transient'
+	       // (Java's default behaviour)
+	        oos.defaultWriteObject();
+	       // Now, manually serialize all transient fields that you want to be serialized
+	        if(bitmap!=null){
+	            ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+	            boolean success = bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+	            if(success){
+	                oos.writeObject(byteStream.toByteArray());
+	            }
+	        }
+	    }
+
+	    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException{
+	       // Now, all again, deserializing - in the SAME ORDER!
+	       // All non-transient fields
+	        ois.defaultReadObject();
+	       // All other fields that you serialized
+	        byte[] image = (byte[]) ois.readObject();
+	        if(image != null && image.length > 0){
+	            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+	        }
+	    }
+	
+//	private void writeObject(ObjectOutputStream out) throws IOException {
+//	    if (bitmap != null) {
+//	        final ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//	        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//	        final byte[] imageByteArray = stream.toByteArray();
+//	        out.writeInt(imageByteArray.length);
+//	        out.write(imageByteArray);
+//	    } else {
+//	        out.writeInt(NO_IMAGE);
+//	    }
+//	}
+//
+//	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
+//
+//	    final int length = in.readInt();
+//
+//	    if (length != NO_IMAGE) {
+//	        final byte[] imageByteArray = new byte[length];
+//	        bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, length);
+//	    }
+//	}
 
 	public String getIdMarker() {
 		return idMarker;
