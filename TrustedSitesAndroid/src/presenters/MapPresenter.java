@@ -1,4 +1,4 @@
-package com.trustedsitesandroid;
+package presenters;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -13,7 +13,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.trustedsitesandroid.Map;
+import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.Map.IMapView;
+import com.trustedsitesandroid.R.drawable;
+import com.trustedsitesandroid.R.id;
+import com.trustedsitesandroid.R.string;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

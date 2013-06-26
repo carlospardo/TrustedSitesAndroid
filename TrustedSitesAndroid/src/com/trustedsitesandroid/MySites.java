@@ -2,6 +2,8 @@ package com.trustedsitesandroid;
 
 import java.util.List;
 
+import presenters.MySitesPresenter;
+
 import models.Site;
 
 import utils.Config;
@@ -28,6 +30,7 @@ public class MySites extends ListActivity  {
 
 	private static final int MENU_OPC1 = 1;
 	private static final int MENU_OPC2 = 2;
+	private static final int MENU_OPC3 = 3;
 	
 	private static Config conf;
 		
@@ -125,7 +128,8 @@ public class MySites extends ListActivity  {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(Menu.NONE, MENU_OPC1, MENU_OPC1, getResources().getString(R.string.update)).setIcon(R.drawable.update);
-		menu.add(Menu.NONE, MENU_OPC2, MENU_OPC2, getResources().getString(R.string.logout)).setIcon(R.drawable.exit);
+		menu.add(Menu.NONE, MENU_OPC2, MENU_OPC2, getResources().getString(R.string.about)).setIcon(R.drawable.info);
+		menu.add(Menu.NONE, MENU_OPC3, MENU_OPC3, getResources().getString(R.string.logout)).setIcon(R.drawable.exit);
 		return true;
 	}
 	
@@ -143,10 +147,14 @@ public class MySites extends ListActivity  {
 		    }	
 			return true;
 		case MENU_OPC2:
+			Intent i = new Intent(MySites.this, About.class);     	 			
+			startActivity(i);
+			return true;
+		case MENU_OPC3:
 			session = Session.getActiveSession();
 			session.closeAndClearTokenInformation();
 			conf.setAccessTokenFB(null);
-			Intent i = new Intent(MySites.this, Login.class);     	 
+			i = new Intent(MySites.this, Login.class);     	 
 			startActivity(i);
 			finish();
 			return true;

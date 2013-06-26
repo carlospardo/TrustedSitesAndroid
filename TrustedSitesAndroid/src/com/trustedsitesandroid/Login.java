@@ -1,5 +1,6 @@
 package com.trustedsitesandroid;
 
+import presenters.LoginPresenter;
 import utils.Config;
 
 import com.facebook.AccessToken;
@@ -13,6 +14,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class Login  extends Activity{
 	
@@ -20,6 +23,8 @@ public class Login  extends Activity{
 	
 	private ILoginView view;
 	private LoginPresenter presenter;
+	
+	private static final int MENU_OPC1 = 1;
 			 
 	/**variable que indica si hay un fragmento visible*/
 	private boolean isResumed = false;
@@ -143,6 +148,22 @@ public class Login  extends Activity{
 	protected void onSaveInstanceState(Bundle outState) {
 	    super.onSaveInstanceState(outState);
 	    uiHelper.onSaveInstanceState(outState);
+	}	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(Menu.NONE, MENU_OPC1, MENU_OPC1, getResources().getString(R.string.about)).setIcon(R.drawable.info);
+		return true;
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_OPC1:
+			Intent i = new Intent(Login.this, About.class);     	 			
+			startActivity(i);
+			return true;		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 		
 	public class ILoginView {

@@ -1,5 +1,6 @@
 package com.trustedsitesandroid;
 
+import presenters.RegisterSitePresenter;
 import utils.Config;
 
 import android.os.Bundle;

@@ -6,9 +6,6 @@
     <string name="get_started">To get started, log in using Facebook</string>
     <string name="app_id">161160437391579</string>
     <string name="settings">Settings</string>
-    <string name="title_activity_tabs">Tabs</string>
-    <string name="title_activity_tab1">Tab1</string>
-    <string name="title_login_view">loginView</string>
 
     <!-- LoginView -->
     <string name="accessing">Accessing...</string>
@@ -18,56 +15,53 @@
     <string name="userFb_error_info">There has been an error with the Facebook login. Try it again after a few minutes</string>
     <string name="accept">Accept</string>
 
+    <!-- About -->
+    <string name="about_trusted_sites">About Trusted Sites</string>
+    <string name="developers">Developers:</string>
     <!-- MySites -->
-    <string name="title_activity_my_sites">MySites</string>
     <string name="my_sites">My Sites</string>
-    <string name="init_my_sites">select the sites you want to see in the map</string>
+    <string name="init_my_sites">Select the sites you want to see on the map</string>
     <!-- FriendList -->
-    <string name="title_activity_friends_list">FriendsList</string>
     <string name="friends">Friends</string>
+    <string name="init_friends_list">Select the users that you want to see their sites</string>
     <string name="update">Refresh</string>
     <string name="logout">Logout</string>
-    <string name="init_friends_list">select which user you want to see their sites</string>
+    <string name="about">About</string>
     <!-- SitesList -->
-    <string name="title_activity_sites_list">SitesList</string>
     <string name="sites">Sites</string>
-    <string name="init_sites_list">select the sites you want to see in the map</string>
+    <string name="init_sites_list">Select the sites you want to see on the map</string>
     <!-- Map -->
-    <string name="title_activity_map">Map</string>
     <string name="map">Map</string>
-    <string name="title_activity_login">Login</string>
     <string name="install_google_maps">Install Google Maps</string>
     <string name="install">Install</string>
     <string name="owner">Owner</string>
     <string name="provider_enable">Enabled the new provider </string>
     <string name="provider_disable">Disabled provider </string>
-    <string name="init_map">Press in a site to see more information. Keep pressed in the map to create a new site</string>
+    <string name="init_map">Press on a site to see more information. Hold your finger on the map to create a new site</string>
     <!-- RegisterSite -->
-    <string name="title_activity_register_site">RegisterSite</string>
-    <string name="register_site">Register Site</string>
-    <string name="name_site">Name of the Site</string>
+    <string name="register_site">Create new Site</string>
+    <string name="name_site">Site name</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
-    <string name="info_site">Information about the Site</string>
+    <string name="info_site">Site description</string>
     <string name="return_map">Return</string>
-    <string name="create_site">Create Site</string>
-    <string name="register_error_info">You should fill all of the fields in the form</string>
+    <string name="create_site">Create</string>
+    <string name="register_error_info">You should fill the form completely</string>
 
     <!-- Info Site -->
-    <string name="title_activity_info_site">InfoSite</string>
-    <string name="info_site_title">Site Information</string>
-    <string name="name_site_info">Name of the Site:</string>
+    <string name="info_site_title">Site Description</string>
+    <string name="name_site_info">Site name:</string>
     <string name="owner_info">Owner:</string>
     <string name="latitude_info">Latitude:</string>
     <string name="longitude_info">Longitude:</string>
-    <string name="info_site_info">Information about the Site:</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_modify_site">ModifySite</string>
-    
+    <string name="info_site_info">Site description:</string>
+
     <!-- Update Site -->
-    <string name="remove_site">Remove Site</string>
-    <string name="update_site">Update Site</string>
-    <string name="message_remove_site">Are you sure that you want to eliminate this site?</string>
-	<string name="cancel">Cancel</string>
-	 
+    <string name="remove_site">Remove</string>
+    <string name="update_site">Update</string>
+    <string name="message_remove_site">Are you sure that you want to remove this site?</string>
+    <string name="cancel">Cancel</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_about">About</string>
+
 </resources>

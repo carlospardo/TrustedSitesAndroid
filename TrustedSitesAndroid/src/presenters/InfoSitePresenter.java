@@ -1,10 +1,14 @@
-package com.trustedsitesandroid;
+package presenters;
 
 import utils.ApiHelpers;
 
 import models.Site;
 
+import com.trustedsitesandroid.InfoSite;
+import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.InfoSite.IInfoSiteView;
+import com.trustedsitesandroid.R.drawable;
+import com.trustedsitesandroid.R.string;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

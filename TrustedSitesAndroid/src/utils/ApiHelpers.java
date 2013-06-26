@@ -16,6 +16,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
@@ -30,7 +31,7 @@ import org.json.JSONObject;
 
 public class ApiHelpers {
 	
-	public static String SERVER_ADDRESS = "http://192.168.1.2:8080/";
+	public static String SERVER_ADDRESS = "http://192.168.1.4:8080/";
 	
 	public static String APP_BASEURL = "PruebaSpringWicket/rest";
 	
@@ -40,11 +41,11 @@ public class ApiHelpers {
 		HttpParams httpParameters = new BasicHttpParams();
 		// Set the timeout in milliseconds until a connection is established.
 		// The default value is zero, that means the timeout is not used. 
-		int timeoutConnection = 100000;
+		int timeoutConnection = 10000;
 		HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 		// Set the default socket timeout (SO_TIMEOUT) 
 		// in milliseconds which is the timeout for waiting for data.
-		int timeoutSocket = 200000;
+		int timeoutSocket = 15000;
 		HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 
 		HttpClient httpclient = new DefaultHttpClient(httpParameters);
@@ -77,11 +78,11 @@ public class ApiHelpers {
 		HttpPut request = new HttpPut(URL);
 		// Set the timeout in milliseconds until a connection is established.
 		// The default value is zero, that means the timeout is not used. 
-		int timeoutConnection = 100000;
+		int timeoutConnection = 10000;
 		HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 		// Set the default socket timeout (SO_TIMEOUT) 
 		// in milliseconds which is the timeout for waiting for data.
-		int timeoutSocket = 200000;
+		int timeoutSocket = 15000;
 		HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 		HttpClient httpclient = new DefaultHttpClient(httpParameters);
 		String result = "";
@@ -117,11 +118,11 @@ public class ApiHelpers {
 		HttpPut request = new HttpPut(URL);
 		// Set the timeout in milliseconds until a connection is established.
 		// The default value is zero, that means the timeout is not used. 
-		int timeoutConnection = 100000;
+		int timeoutConnection = 10000;
 		HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 		// Set the default socket timeout (SO_TIMEOUT) 
 		// in milliseconds which is the timeout for waiting for data.
-		int timeoutSocket = 200000;
+		int timeoutSocket = 15000;
 		HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 		HttpClient httpclient = new DefaultHttpClient(httpParameters);
 		String result = "";
@@ -148,6 +149,43 @@ public class ApiHelpers {
 			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
+		return result;
+	}
+	
+	public static String removeContent(String URL) throws Exception {
+
+		HttpDelete request = new HttpDelete(URL);		
+		HttpParams httpParameters = new BasicHttpParams();
+		// Set the timeout in milliseconds until a connection is established.
+		// The default value is zero, that means the timeout is not used. 
+		int timeoutConnection = 10000;
+		HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+		// Set the default socket timeout (SO_TIMEOUT) 
+		// in milliseconds which is the timeout for waiting for data.
+		int timeoutSocket = 15000;
+		HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+
+		HttpClient httpclient = new DefaultHttpClient(httpParameters);
+
+		request.setHeader("Content-Type", "application/json");
+		ResponseHandler<String> handler = new BasicResponseHandler();
+		
+		String result = "";
+		try {
+			HttpResponse response = httpclient.execute(request);
+            result=Userrequest(response); 
+            if(response.getStatusLine().getStatusCode()==HttpStatus.SC_BAD_REQUEST){
+				throw new Exception(result);
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			throw new Exception(e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new Exception(e.getMessage());
+		}
+		
+		httpclient.getConnectionManager().shutdown();
 		return result;
 	}
 	
@@ -191,7 +229,7 @@ public class ApiHelpers {
 	}
 	
 	public static void removeSite(String idSite, String idFacebook)throws Exception{
-		ApiHelpers.getContent(SERVER_ADDRESS + APP_BASEURL+"/sites/remove?idSite="+idSite+"&idFacebook="+idFacebook);
+		ApiHelpers.removeContent(SERVER_ADDRESS + APP_BASEURL+"/sites/remove?idSite="+idSite+"&idFacebook="+idFacebook);
 		
 	}
 	

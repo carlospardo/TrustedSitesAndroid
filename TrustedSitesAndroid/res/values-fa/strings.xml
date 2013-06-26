@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">aaسایت های مورد اعتماد</string>
+    <string name="menu_settings">Opciones</string>
+    <string name="get_started">برای شروع، در استفاده از فیس بوک وارد شوید</string>
+    <string name="app_id">161160437391579</string>
+    <string name="settings">Opciones</string>
+
+    <!-- LoginView -->
+    <string name="accessing">Accediendo...</string>
+    <string name="progress">Progreso</string>
+    <string name="error">Error</string>
+    <string name="server_error_info">Ha habido un error con el servidor. Cierra y vuelva a abrir la sesión pasados unos minutos</string>
+    <string name="userFb_error_info">Ha habido un error con el login de Facebook. Vuelve a intentarlo pasados unos minutos</string>
+    <string name="accept">Aceptar</string>
+
+    <!-- MySites -->
+    <string name="my_sites">Mis Sites</string>
+    <string name="init_my_sites">Selecciona los sites que quieres ver en el mapa</string>
+    <!-- FriendList -->
+    <string name="friends">Amigos</string>
+    <string name="update">Refrescar</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="init_friends_list">Selecciona los usuarios de los cuales quieres ver sus sites</string>
+    <!-- SitesList -->
+    <string name="sites">Sites</string>
+    <string name="init_sites_list">selecciona los sites que quieres ver en el mapa</string>
+    <!-- Map -->
+    <string name="map">Mapa</string>
+    <string name="install_google_maps">Instala Google Maps</string>
+    <string name="install">Instalar</string>
+    <string name="owner">Propietario</string>
+    <string name="provider_enable">Nuevo proveedor de localización activado</string>
+    <string name="provider_disable">Proveedor de localización desactivado </string>
+    <string name="init_map">Presiona en un site para ver más información. MAntén pulsado en el mapa
+        para crear un sitio nuevo</string>
+    <!-- RegisterSite -->
+    <string name="register_site">Registrar Site</string>
+    <string name="name_site">Nombre del Site</string>
+    <string name="latitude">Latitud</string>
+    <string name="longitude">Longitud</string>
+    <string name="info_site">Información sobre el Site</string>
+    <string name="return_map">Volver</string>
+    <string name="create_site">Crear Site</string>
+    <string name="register_error_info">Debes completar todos los datos del formulario</string>
+
+    <!-- Info Site -->
+    <string name="info_site_title">Información de Site</string>
+    <string name="name_site_info">Nombre del Site:</string>
+    <string name="owner_info">Porpietario:</string>
+    <string name="latitude_info">Latitud:</string>
+    <string name="longitude_info">Longitud:</string>
+    <string name="info_site_info">Information sobre el Site:</string>
+    
+    <!-- Update Site -->
+    <string name="remove_site">Eliminar Site</string>
+    <string name="update_site">Actualizar Site</string>
+    <string name="message_remove_site">¿Estás seguro que quieres eliminar este sitio?</string>
+	<string name="cancel">Cancelar</string>
+	 
+</resources>

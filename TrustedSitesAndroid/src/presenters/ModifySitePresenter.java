@@ -1,6 +1,9 @@
-package com.trustedsitesandroid;
+package presenters;
 
+import com.trustedsitesandroid.ModifySite;
+import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.ModifySite.IModifySiteView;
+import com.trustedsitesandroid.R.string;
 
 import utils.ApiHelpers;
 

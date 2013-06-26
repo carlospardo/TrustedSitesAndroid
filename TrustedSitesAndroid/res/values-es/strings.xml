@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">aaTrusted Sites</string>
+    <string name="menu_settings">Opciones</string>
+    <string name="get_started">Para empezar, logueate con Facebook</string>
+    <string name="app_id">161160437391579</string>
+    <string name="settings">Opciones</string>
+    
+    <!-- LoginView -->
+    <string name="accessing">Accediendo...</string>
+    <string name="progress">Progreso</string>
+    <string name="error">Error</string>
+    <string name="server_error_info">Ha habido un error con el servidor. Cierra y vuelve a abrir la sesión pasados unos minutos</string>
+    <string name="userFb_error_info">Ha habido un error con el login de Facebook. Vuelve a intentarlo pasados unos minutos</string>
+    <string name="accept">Aceptar</string>
+
+    <!-- About -->
+    <string name="about_trusted_sites">Acerca de Trusted Sites</string>
+    <string name="developers">Developers:</string>
+    <!-- MySites -->
+    <string name="my_sites">Mis Sitios</string>
+    <string name="init_my_sites">Selecciona los sitios que quieres ver en el mapa</string>
+    <string name="update">Refrescar</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="about">Acerca de</string>
+    <!-- FriendList -->
+    <string name="friends">Amigos</string>
+    <string name="init_friends_list">Selecciona los usuarios de los cuales quieres ver sus sitios</string>
+    <!-- SitesList -->
+    <string name="sites">Sitios</string>
+    <string name="init_sites_list">selecciona los sitios que quieres ver en el mapa</string>
+    <!-- Map -->
+    <string name="map">Mapa</string>
+    <string name="install_google_maps">Instala Google Maps</string>
+    <string name="install">Instalar</string>
+    <string name="owner">Propietario</string>
+    <string name="provider_enable">Nuevo proveedor de localización activado</string>
+    <string name="provider_disable">Proveedor de localización desactivado </string>
+    <string name="init_map">Presiona en un sitio para ver más información. Mantén pulsado en el mapa
+        para crear un sitio nuevo</string>
+    <!-- RegisterSite -->
+    <string name="register_site">Crear nuevo Sitio</string>
+    <string name="name_site">Nombre del Sitio</string>
+    <string name="latitude">Latitud</string>
+    <string name="longitude">Longitud</string>
+    <string name="info_site">Descripción del Sitio</string>
+    <string name="return_map">Volver</string>
+    <string name="create_site">Crear</string>
+    <string name="register_error_info">Debes completar todos los datos del formulario</string>
+
+    <!-- Info Site -->
+    <string name="info_site_title">Información de Sitio</string>
+    <string name="name_site_info">Nombre del Sitio:</string>
+    <string name="owner_info">Porpietario:</string>
+    <string name="latitude_info">Latitud:</string>
+    <string name="longitude_info">Longitud:</string>
+    <string name="info_site_info">Descripción del Sitio:</string>
+    
+    <!-- Update Site -->
+    <string name="remove_site">Eliminar</string>
+    <string name="update_site">Actualizar</string>
+    <string name="message_remove_site">¿Estás seguro de que quieres eliminar este sitio?</string>
+	<string name="cancel">Cancelar</string>
+	 
+</resources>

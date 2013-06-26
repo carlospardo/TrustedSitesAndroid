@@ -1,4 +1,4 @@
-package com.trustedsitesandroid;
+package presenters;
 
 import java.util.List;
 
@@ -13,7 +13,10 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.trustedsitesandroid.MySites;
+import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.MySites.IMySitesView;
+import com.trustedsitesandroid.R.string;
 
 public class MySitesPresenter {
 

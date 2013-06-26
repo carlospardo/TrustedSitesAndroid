@@ -1,5 +1,6 @@
 package com.trustedsitesandroid;
 
+import presenters.InfoSitePresenter;
 import models.Site;
 import utils.Config;
 

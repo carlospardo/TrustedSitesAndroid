@@ -1,4 +1,4 @@
-package com.trustedsitesandroid;
+package presenters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,9 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.trustedsitesandroid.R;
+import com.trustedsitesandroid.SitesList;
+import com.trustedsitesandroid.R.string;
 import com.trustedsitesandroid.SitesList.ISitesListView;
 
 public class SitesListPresenter {
