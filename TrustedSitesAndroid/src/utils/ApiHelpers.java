@@ -29,7 +29,7 @@ public class ApiHelpers {
 	
 	public static String SERVER_ADDRESS = "http://192.168.1.4:8080/";
 	
-	public static String APP_BASEURL = "PruebaSpringWicket/rest";
+	public static String APP_BASEURL = "TrustedSitesServer/rest";
 	
 	public static String getContent(String URL) throws Exception {
 
