@@ -14,7 +14,6 @@ import android.graphics.BitmapFactory;
 
 public class Site implements Serializable{
 
-	private static final int NO_IMAGE = -1;
 	private static final long serialVersionUID = 1L;
 	private String idSite;
 	private String name;

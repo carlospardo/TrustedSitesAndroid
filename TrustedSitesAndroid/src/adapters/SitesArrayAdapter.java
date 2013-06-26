@@ -6,8 +6,6 @@ import utils.Config;
 
 import models.Site;
 
-import com.trustedsitesandroid.FriendsList;
-import com.trustedsitesandroid.MySites;
 import com.trustedsitesandroid.R;
 
 import android.app.Activity;
@@ -37,7 +35,7 @@ public class SitesArrayAdapter  extends BaseAdapter  {
 		LayoutInflater inflater = context.getLayoutInflater();
 		View rowView = inflater.inflate(R.layout.list_row, null, true);	
 				
-		String url=listSites.get(position).getUrlPhoto();
+//		String url=listSites.get(position).getUrlPhoto();
 //		if(url!=null){
 //			 new utils.DownloadImageTask((ImageView) rowView.findViewById(R.id.ImageView02)).execute(url);
 //		}

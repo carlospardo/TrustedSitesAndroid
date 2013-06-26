@@ -17,10 +17,8 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
-import com.trustedsitesandroid.FriendsList;
 import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.FriendsList.IFriendsListView;
-import com.trustedsitesandroid.R.string;
 
 public class FriendsListPresenter {
 

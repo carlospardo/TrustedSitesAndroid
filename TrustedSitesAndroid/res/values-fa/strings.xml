@@ -1,62 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">aaسایت های مورد اعتماد</string>
-    <string name="menu_settings">Opciones</string>
-    <string name="get_started">برای شروع، در استفاده از فیس بوک وارد شوید</string>
+    <string name="app_name">aaTrusted Sites</string>
+    <string name="menu_settings">تنظیمات</string>
+    <string name="get_started">برای شروع به فیس بوک وارد شوید</string>
     <string name="app_id">161160437391579</string>
-    <string name="settings">Opciones</string>
-
+    <string name="settings">تنظیمات</string>
+      
     <!-- LoginView -->
-    <string name="accessing">Accediendo...</string>
-    <string name="progress">Progreso</string>
-    <string name="error">Error</string>
-    <string name="server_error_info">Ha habido un error con el servidor. Cierra y vuelva a abrir la sesión pasados unos minutos</string>
-    <string name="userFb_error_info">Ha habido un error con el login de Facebook. Vuelve a intentarlo pasados unos minutos</string>
-    <string name="accept">Aceptar</string>
+    <string name="accessing">در حال دسترسی… </string>
+    <string name="progress">در حال اجرا</string>
+    <string name="error">خطا</string>
+    <string name="server_error_info">خطا در سرور, برنامه را دوباره اجرا کنید</string>
+    <string name="userFb_error_info">خطا در وارد شدن به فیس بوک, بعد از چند دقیقه دوباره تلاش کنید</string>
+    <string name="accept">تایید</string>
 
+    <!-- About -->
+    <string name="about_trusted_sites">درباره ی برنامه</string>
+    <string name="developers">*توسعه دهند</string>
     <!-- MySites -->
-    <string name="my_sites">Mis Sites</string>
-    <string name="init_my_sites">Selecciona los sites que quieres ver en el mapa</string>
+    <string name="my_sites">مکان های من </string>
+    <string name="init_my_sites">مکان هایی که می خواهید در که نقشه آشکار شود را انتخاب کنید</string>
     <!-- FriendList -->
-    <string name="friends">Amigos</string>
-    <string name="update">Refrescar</string>
-    <string name="logout">Cerrar Sesión</string>
-    <string name="init_friends_list">Selecciona los usuarios de los cuales quieres ver sus sites</string>
+    <string name="friends">دوستان </string>
+    <string name="update">بروزرسانی</string>
+    <string name="logout">خروج</string>
+    <string name="about">درباره ی</string>
+    <string name="init_friends_list">کاربرانی که می خواهید مکان هایشان را ببینید</string>
     <!-- SitesList -->
-    <string name="sites">Sites</string>
-    <string name="init_sites_list">selecciona los sites que quieres ver en el mapa</string>
+    <string name="sites">مکان ها</string>
+    <string name="init_sites_list">مکان هایی که می خواهید روی نقشه ببینید را انتخاب کنید</string>
     <!-- Map -->
-    <string name="map">Mapa</string>
-    <string name="install_google_maps">Instala Google Maps</string>
-    <string name="install">Instalar</string>
-    <string name="owner">Propietario</string>
-    <string name="provider_enable">Nuevo proveedor de localización activado</string>
-    <string name="provider_disable">Proveedor de localización desactivado </string>
-    <string name="init_map">Presiona en un site para ver más información. MAntén pulsado en el mapa
-        para crear un sitio nuevo</string>
+    <string name="map">نقشه</string>
+    <string name="install_google_maps">نصب نقشه گوگل</string>
+    <string name="install">نصب</string>
+    <string name="owner">صاحب</string>
+    <string name="provider_enable">فعال کردن خدمات دهنده جدید </string>
+    <string name="provider_disable">غیر فعال کردن خدمات </string>
+    <string name="init_map">برای مشاهده اطلاعات بیشتر روی مکان ها کلیک کنید, با کلیک و نگه داشتن مکان جدید ایجاد کنید</string>
     <!-- RegisterSite -->
-    <string name="register_site">Registrar Site</string>
-    <string name="name_site">Nombre del Site</string>
-    <string name="latitude">Latitud</string>
-    <string name="longitude">Longitud</string>
-    <string name="info_site">Información sobre el Site</string>
-    <string name="return_map">Volver</string>
-    <string name="create_site">Crear Site</string>
-    <string name="register_error_info">Debes completar todos los datos del formulario</string>
+    <string name="register_site">ثبت مکان جدید</string>
+    <string name="name_site">نام مکان جدید</string>
+    <string name="latitude">عرض جغرافیایی</string>
+    <string name="longitude">طول جغرافیایی</string>
+    <string name="info_site">شرح سایت</string>
+    <string name="return_map">بازگست</string>
+    <string name="create_site">ساخت مکان جدید</string>
+    <string name="register_error_info">تمام موارد باید تکمیل شوند</string>
 
     <!-- Info Site -->
-    <string name="info_site_title">Información de Site</string>
-    <string name="name_site_info">Nombre del Site:</string>
-    <string name="owner_info">Porpietario:</string>
-    <string name="latitude_info">Latitud:</string>
-    <string name="longitude_info">Longitud:</string>
-    <string name="info_site_info">Information sobre el Site:</string>
+    <string name="info_site_title">اطلاعات مکان</string>
+    <string name="name_site_info">تام مکان :</string>
+    <string name="owner_info">صاحب مکان :</string>
+    <string name="latitude_info">عرض جغرافیایی:</string>
+    <string name="longitude_info">طول جغرافیایی:</string>
+    <string name="info_site_info">اطلاعات مکان :</string>
     
     <!-- Update Site -->
-    <string name="remove_site">Eliminar Site</string>
-    <string name="update_site">Actualizar Site</string>
-    <string name="message_remove_site">¿Estás seguro que quieres eliminar este sitio?</string>
-	<string name="cancel">Cancelar</string>
+    <string name="remove_site">حذف مکان</string>
+    <string name="update_site">بروز رسانی مکان</string>
+    <string name="message_remove_site">آیا اطمینان دارید که می خواهید مکان را پاک کنید؟</string>
+	<string name="cancel">انصراف</string>
 	 
 </resources>

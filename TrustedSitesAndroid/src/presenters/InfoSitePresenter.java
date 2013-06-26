@@ -1,20 +1,15 @@
 package presenters;
 
-import utils.ApiHelpers;
-
 import models.Site;
 
-import com.trustedsitesandroid.InfoSite;
 import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.InfoSite.IInfoSiteView;
-import com.trustedsitesandroid.R.drawable;
-import com.trustedsitesandroid.R.string;
+
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.util.Log;
 
 public class InfoSitePresenter {

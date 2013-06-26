@@ -1,7 +1,6 @@
 package com.trustedsitesandroid;
 
 import presenters.InfoSitePresenter;
-import models.Site;
 import utils.Config;
 
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;

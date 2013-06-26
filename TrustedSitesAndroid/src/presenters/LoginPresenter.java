@@ -7,11 +7,9 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
-import com.trustedsitesandroid.Login;
 import com.trustedsitesandroid.R;
 import com.trustedsitesandroid.Tabs;
 import com.trustedsitesandroid.Login.ILoginView;
-import com.trustedsitesandroid.R.string;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

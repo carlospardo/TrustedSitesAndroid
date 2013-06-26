@@ -5,8 +5,6 @@ import utils.ApiHelpers;
 import models.Site;
 
 import com.trustedsitesandroid.R;
-import com.trustedsitesandroid.RegisterSite;
-import com.trustedsitesandroid.R.string;
 import com.trustedsitesandroid.RegisterSite.IRegisterSiteView;
 
 import android.app.AlertDialog;
