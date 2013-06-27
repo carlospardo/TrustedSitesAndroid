@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">aaTrusted Sites</string>
+    <string name="app_name">Trusted Sites</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="get_started">برای شروع به فیس بوک وارد شوید</string>
     <string name="app_id">161160437391579</string>

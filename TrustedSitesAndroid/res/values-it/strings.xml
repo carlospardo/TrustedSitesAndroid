@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Trusted Sites</string>
+    <string name="menu_settings">Opzioni</string>
+    <string name="get_started">Per cominiziare, apre il profilo Facebook</string>
+    <string name="app_id">161160437391579</string>
+    <string name="settings">Opzioni</string>
+
+    <!-- LoginView -->
+    <string name="accessing">Caricando...</string>
+    <string name="progress">Progresso</string>
+    <string name="error">Errore</string>
+    <string name="server_error_info">Errore con il server. Chiude e riapre tra pochi minuti</string>
+    <string name="userFb_error_info">Errore con il login Facebook. Riprova tra pochi minuti</string>
+    <string name="accept">Accettare</string>
+
+    <!-- About -->
+    <string name="about_trusted_sites">Circa di Trusted Sites</string>
+    <string name="developers">Sviluppatori:</string>
+    <!-- MySites -->
+    <string name="my_sites">I miei siti</string>
+    <string name="init_my_sites">Selezionare i siti che vuoi guardare nella mappa</string>
+    <!-- FriendList -->
+    <string name="friends">Amici</string>
+    <string name="init_friends_list">Sciegle gli utenti per guardare i suoi siti </string>
+    <string name="update">Aggiornare</string>
+    <string name="logout">Chiude Sessione</string>
+    <string name="about">Circa di</string>
+    <!-- SitesList -->
+    <string name="sites">Siti</string>
+    <string name="init_sites_list">Sciegle i siti che vuoi guardare nel mappa</string>
+    <!-- Map -->
+    <string name="map">Mappa</string>
+    <string name="install_google_maps">Installa Google Maps</string>
+    <string name="install">Installare</string>
+    <string name="owner">Proprietario</string>
+    <string name="provider_enable">Nuovo fornitore di allocazione attivato  </string>
+    <string name="provider_disable">Fornitore di allocazione disattivato </string>
+    <string name="init_map">Premere in un sito per ottenere maggiori informazioni. Tenere il dito premuto sulla mappa per creare un nuovo sito</string>
+    <!-- RegisterSite -->
+    <string name="register_site">Crea nuovo Sito</string>
+    <string name="name_site">Nome del sito</string>
+    <string name="latitude">Latitudine</string>
+    <string name="longitude">Longitudine</string>
+    <string name="info_site">Descrizione del sito</string>
+    <string name="return_map">Tornare</string>
+    <string name="create_site">Creare</string>
+    <string name="register_error_info">Si dovrebbe riempire completamente il formulario</string>
+
+    <!-- Info Site -->
+    <string name="info_site_title">Informatzione del sito</string>
+    <string name="name_site_info">Nome del sito:</string>
+    <string name="owner_info">Proprietario:</string>
+    <string name="latitude_info">Latitudine:</string>
+    <string name="longitude_info">Longitudine:</string>
+    <string name="info_site_info">Descrizione del sito:</string>
+
+    <!-- Update Site -->
+    <string name="remove_site">Eliminare</string>
+    <string name="update_site">Aggiornare</string>
+    <string name="message_remove_site">Sei sicuro di voler rimuovere questo sito?</string>
+    <string name="cancel">Cancellare</string>
+    <string name="title_activity_about">Circa di</string>
+
+</resources>
